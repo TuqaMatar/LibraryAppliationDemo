@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 300px;
+            height: 30px;
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #333333;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555555;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Add Database</h1>
+<form method="post" action="/admin/addDatabase">
+    <label for="name">name:</label>
+    <input type="text" id="name" name="name" required>
+    <form>
+        <label for="schema">Enter Schema:</label><br>
+        <textarea id="schema" name="schema" rows="5" cols="50"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</form>
+</body>
+</html>

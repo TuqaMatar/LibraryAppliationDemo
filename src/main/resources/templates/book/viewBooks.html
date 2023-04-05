@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>View Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #CCCCCC;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #EEEEEE;
+            font-weight: bold;
+        }
+
+        td.actions {
+            width: 80px;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #333333;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #555555;
+        }
+
+        .delete-button {
+            background-color: #FF0000;
+        }
+
+        .update-button {
+            background-color: #00FF00;
+        }
+
+    </style>
+</head>
+<body>
+<h1>View Books</h1>
+<form method="get" action="/book/search">
+    <label for="search">Search:</label>
+    <input type="text" id="search" name="query" required>
+    <button type="submit">Search</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Genre</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book['title']}"></td>
+        <td th:text="${book['author']}"></td>
+        <td th:text="${book['year']}"></td>
+        <td th:text="${book['genre']}"></td>
+
+
+        <td class="actions">
+            <form th:action="@{/book/ShowUpdate/__${book['id']}__}" method="post">
+                <input type="hidden" th:name="bookId" th:value="${book['id']}"/>
+                    <button class="button update-button">Update</button>
+                </a>
+            </form>
+            <form th:action="@{/book/delete/__${book['id']}__}" method="post">
+                <input type="hidden" th:name="bookId" th:value="${book['id']}"/>
+                <button type="submit" class="button delete-button">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

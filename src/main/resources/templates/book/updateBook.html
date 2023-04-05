@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 300px;
+            height: 30px;
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #333333;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555555;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+<h1>Update Book</h1>
+<form th:action="@{/book/update/__${book.getId()}__}" method="post">
+    <input type="hidden" th:name="bookId" th:value="${book.getId()}" />
+    <label>Title:</label>
+    <input type="text" th:name="title" th:value="${book.getTitle()}" />
+    <label>Author:</label>
+    <input type="text" th:name="author" th:value="${book.getAuthor()}" />
+    <label>Year:</label>
+    <input type="number" th:name="year" th:value="${book.getYear()}" />
+    <label>Genre:</label>
+    <input type="text" th:name="genre" th:value="${book.getGenre()}" />
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>

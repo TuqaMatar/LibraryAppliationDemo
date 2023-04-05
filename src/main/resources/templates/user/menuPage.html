@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F0F0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #333333;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #555555;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome, <span th:text="${username}"></span>!</h1>
+<div class="container">
+    <a href="/book/add" class="button">Add Book</a>
+    <a href="/book/view" class="button">View Books</a>
+</div>
+</body>
+</html>
